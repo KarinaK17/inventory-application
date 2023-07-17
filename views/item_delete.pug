@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1!=`${title}: ${item.name}`
+
+  p Do you really want to delete this Item?
+
+  p Category: 
+    a(href=item.category.url, class="category-link")!=`${item.category.name}`
+  p!=`Brand: ${item.brand}`
+  p Size: #{item.size}
+  p Gender: #{item.gender}
+  p Color: #{item.color}
+  p In stock: #{item.quantity_in_stock}
+  p Price: #{item.price} $
+  p!=`Description: ${item.description}`
+
+  form(method='POST' action='')
+    div
+      input(type='hidden',name='itemid', required='true', value=item._id )
+    button(type='submit') Delete

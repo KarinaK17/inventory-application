@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  //p Welcome to #{title} page!
+  if items_list.length>0
+      ol
+        each item in items_list
+          li
+            a(href=item.url, class="item-link")!=item.name
+            |  (size: #{item.size},  color: #{item.color})  from 
+            a(href=item.category.url, class="category-link")=item.category.name 
+            |  category.
+            p!=`Brand: ${item.brand}`
+            p In stock: #{item.quantity_in_stock}
+            hr         
+  else
+    p You do not have any items yet!
+

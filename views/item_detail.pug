@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1!=`${item.name} (id: ${item._id})`
+  br
+  p Category: 
+    a(href=item.category.url, class="category-link")=item.category.name
+  p!=`Brand: ${item.brand}`
+  p Size: #{item.size}
+  p Gender: #{item.gender}
+  p Color: #{item.color}
+  p In stock: #{item.quantity_in_stock}
+  p Price: #{item.price} $
+  p!=`Description: ${item.description}`
+  hr
+  p
+    a(href=item.url+'/delete', class="delete-link") Delete product
+  p 
+    a(href=item.url+"/update", class="update-link") Update product
+

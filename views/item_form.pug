@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div
+      label(for='category') Category:
+      select(type='select' placeholder='Select category' name='category' required='true')
+        - categories.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for category in categories
+          if item
+            option(value=category._id selected=(category._id.toString()===item.category._id.toString() ? 'selected' : false) ) #{category.name}
+          else
+            option(value=category._id) #{category.name}
+    div
+      label(for='name') Name:
+      input(type='text' name='name' required='true' value!=(undefined===item ? '' : `${item.name}`))
+    div
+      label(for='brand') Brand:
+      input(type='text' name='brand' required='true' value!=(undefined===item ? '' : `${item.brand}`))
+    div
+      label(for='color') Color:
+      input(type='text' name='color' required='false' value=(undefined===item ? '' : item.color))
+    div
+      label(for='size') Size:
+      input(type='text' name='size' required='true' value=(undefined===item ? '' : item.size))
+    div
+      label(for='gender') Gender:
+      select(type='select' placeholder='Select gender' name='gender' required='true' )
+        option(value='Men' selected=(undefined===item || item.gender!="Men" ? false:'selected')) Men
+        option(value="Women" selected=(undefined===item || item.gender!="Women"? false:'selected')) Women
+        option(value='Girls' selected=(undefined===item || item.gender!="Girls" ? false:'selected')) Girls
+        option(value='Boys' selected=(undefined===item || item.gender!="Boys" ? false:'selected')) Boys
+        option(value='Baby girls' selected=(undefined===item || item.gender!="Baby girls" ? false:'selected')) Baby girls
+        option(value='Baby boys' selected=(undefined===item || item.gender!="Baby boys" ? false:'selected')) Baby boys
+    div
+      label(for='description') Description:
+      textarea(name='description' required='true' rows="1" value!=(undefined===item ? '' : `${item.description}`))
+    div
+      label(for='price') Price:
+      input(type='text' name='price' required='true' value=(undefined===item ? '' : item.price))
+    div
+      label(for='quantity_in_stock') Quantity in stock:
+      input(type='text' name='quantity_in_stock' required='true' value=(undefined===item ? '' : item.quantity_in_stock))    
+    button(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
