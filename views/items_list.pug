@@ -11,8 +11,8 @@ block content
             |  (size: #{item.size},  color: #{item.color})  from 
             a(href=item.category.url, class="category-link")=item.category.name 
             |  category.
-            p!=`Brand: ${item.brand}`
-            p In stock: #{item.quantity_in_stock}
+            p!=` <strong> Brand:</strong> ${item.brand}`
+            p #[strong In stock:] #{item.quantity_in_stock}
             hr         
   else
     p You do not have any items yet!

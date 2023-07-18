@@ -5,10 +5,12 @@ block content
 
   form(method='POST' action='')
     div
-      label(for='name') Category:
-      input(type='text', placeholder='Skirts, Swimwear, etc.' name='name' value=(undefined===category ? '' : category.name))
-      label(for='description') Category description:
-      input(type='text', name='description' value=(undefined===category ? '' : `${category.description}`))
+      div.form-item
+        label(for='name') Category:
+        input(type='text' id="name" placeholder='Skirts, Swimwear, etc.' name='name' value=(undefined===category ? '' : category.name))
+      div.form-item  
+        label(for='description') Category description:
+        textarea(name='description' autocomplete="off" id="description" rows="3")!=`${undefined===category ? '' : category.description}`
     button(type='submit') Submit
 
   if errors

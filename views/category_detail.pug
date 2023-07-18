@@ -4,24 +4,20 @@ block content
   h1 #{category.name} Category
   p!=category.description
   br
-  // p Welcome to #{title} page!
   if category_items
       ol
         each item in category_items
-          //- li!=`${item.name}` (product id:
-          //-   a(href=item.url, class="item-link")=item._id
-          //-   |  )
-          li!=`${item.name} (product id: <a href=${item.url} class="item-link">${item._id}</a>)`    
-            p!=`Brand: ${item.brand}`
-            p Size: #{item.size}
-            p Color: #{item.color}
-            p In stock: #{item.quantity_in_stock}
+          li!=`<strong>${item.name}</strong> (product id: <a href=${item.url} class="item-link">${item._id}</a>)`    
+            p!=`<strong>Brand:</strong> ${item.brand}`
+            p #[strong Size:] #{item.size}
+            p #[strong Color:] #{item.color}
+            p #[strong In stock:] #{item.quantity_in_stock}
             hr
   else
     p There are no items in this category!
   hr
-  p
+  p(class="link-parent")
     a(href=category.url+'/delete', class="delete-link") Delete category
-  p 
+  p(class="link-parent")
     a(href=category.url+"/update", class="update-link") Update category  
 

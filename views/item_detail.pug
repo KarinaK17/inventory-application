@@ -3,18 +3,18 @@ extends layout
 block content
   h1!=`${item.name} (id: ${item._id})`
   br
-  p Category: 
+  p #[strong Category: ]
     a(href=item.category.url, class="category-link")=item.category.name
-  p!=`Brand: ${item.brand}`
-  p Size: #{item.size}
-  p Gender: #{item.gender}
-  p Color: #{item.color}
-  p In stock: #{item.quantity_in_stock}
-  p Price: #{item.price} $
-  p!=`Description: ${item.description}`
+  p!=`<strong> Brand: </strong> ${item.brand}`
+  p #[strong Size:] #{item.size}
+  p #[strong Gender:] #{item.gender}
+  p #[strong Color:] #{item.color}
+  p #[strong In stock:] #{item.quantity_in_stock}
+  p #[strong Price:] #{item.price} $
+  p!=`<strong> Description: </strong> ${item.description}`
   hr
-  p
+  p(class="link-parent")
     a(href=item.url+'/delete', class="delete-link") Delete product
-  p 
+  p(class="link-parent") 
     a(href=item.url+"/update", class="update-link") Update product
 

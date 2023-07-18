@@ -10,8 +10,6 @@ exports.item_list = asyncHandler(async (req, res, next) => {
     .sort({ category: 1, name: 1 })
     .exec();
 
-  console.log(allItems);
-
   res.render("items_list", {
     title: "Items List",
     items_list: allItems,
